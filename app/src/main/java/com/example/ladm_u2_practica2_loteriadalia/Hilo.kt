@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.widget.ImageView
 import com.example.ladm_u2_practica2_loteriadalia.databinding.ActivityMainBinding
 import java.io.IOException
+import kotlin.random.Random
 
 class Hilo(im: ImageView) : Thread() {
     var ejecutar= true
@@ -26,18 +27,16 @@ class Hilo(im: ImageView) : Thread() {
         R.drawable.carta48,R.drawable.carta49,R.drawable.carta50,R.drawable.carta51,
         R.drawable.carta52,R.drawable.carta53,R.drawable.carta54)
 
-    val inicial = arrayListOf(R.drawable.cartaini1)
-
-    //val main = MainActivity()
     override fun run() {
         super.run()
 
         while (ejecutar){
 
             if (!pausar){
-                imagGlob.setImageResource(inicial[0])
+                imagGlob.setImageResource(mazo[contador++])
 
             }
+            mazo.shuffle()
             sleep(3000)
         }
     }
@@ -57,6 +56,7 @@ class Hilo(im: ImageView) : Thread() {
     fun estaPausado(): Boolean{
         return pausar
     }
+
 
 
 }

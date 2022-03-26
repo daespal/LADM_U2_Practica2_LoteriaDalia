@@ -12,6 +12,7 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
+    val inicial = arrayListOf(R.drawable.cartaini1)
     val hilo = Hilo(binding.imagen)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.iniciar.setOnClickListener{
+            binding.imagen.setImageResource(inicial[0])
+            val mp = MediaPlayer.create(this, R.raw.inicio1)
+            mp.start()
             hilo.start()
         }
     }
